@@ -1,0 +1,27 @@
+<ion-view title="绑定车牌">
+    <ion-header-bar class="bar-positive">
+        <h1 class="title">绑定车牌</h1>
+        <div class="buttons">
+            <button class="button button-clear button-icon ion-close-round" ng-click="closePass()"></button>
+        </div>
+    </ion-header-bar>
+    <ion-content has-header="true" has-bouncing="true">
+        <div class="list list-inset removePM">
+
+            <div class="item item-input">
+            <span class="input-label" style="width: 90px;font-size:80%">车牌号:</span>
+
+            <select class="button" id="selCarNo"  ng-options='t.CarNo for t in listCarNo'
+            ng-model="UserInfo.CarNo"  ng-change="carNoUpdate()"></select>
+            </div>
+            <div class="item item-button-right item-input">
+            <span class="input-label" style="width: 90px;font-size:80%">验证码:</span>
+            <input type="text" placeholder="验证码" ng-model="UserInfo.SecurityCode"/>
+            <button id="btnSecurity" class="button button-calm" ng-click="getSecurityCode(UserInfo)"> {{btnText}}</button>
+            </div>
+
+        </div>
+
+        <div class="loginButton"><button class="button ion-unlocked button-block button-balanced" ng-click="checkSecurityCode();" > 绑 定 </button>  </div>
+    </ion-content>
+</ion-view>

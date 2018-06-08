@@ -1,0 +1,52 @@
+<ion-view view-title="{{Language.home.home}}" cache-view="false" >
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button button-clear button-icon ion-qr-scanner" ng-click="Scan()">扫一扫</button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content scroll="true" overflow-scroll="true" style="background-color:lavender">
+        <!--<audio ng-src="img/complete.wav" id="playSound"></audio>-->
+        <!--<audio controls>-->
+            <!--<source src="img/complete.wav" type="audio/mpeg">-->
+            <!--您的浏览器不支持 audio 元素。-->
+        <!--</audio>-->
+        <h4>您好：{{accessDriver.DriverName}}; 您驾驶的车辆：{{accessDriver.CarNo}}</h4>
+
+        <button style="width: 80px"  class="button button-small button-outline button-positive" ng-click="LoginOut()">下线登出</button>
+
+        <p ng-if="DriverBillList==null">还没有任务单，请保持APP打开状态</p>
+
+        <div class="list card"  ng-repeat="order in DriverBillList">
+            <div class="item">
+                <h3>订单号：{{order.ApplicantNO}} </h3>
+                <p style="font-size: 13px">派车时间：{{order.DistributionTime | date:"MM/dd HH:mm"}}  </p>
+                <p style="font-size: 13px">货物类型：{{order.GoodsType}}  </p>
+                <p style="font-size: 13px"><span style="color: red">线路：{{order.Line}}</span> </p>
+            </div>
+            <div class="item item-text-wrap" ng-repeat="detail in order.listDetails">
+                <p style="font-size: 12px;color: #0000FF">E-gate单号：{{detail.EgateBillNo}}</p>
+                <p style="font-size: 12px;font-weight: bold;color: firebrick">提货 [{{detail.DeliveryDock}}] 进:<span style="color: #FF0000">{{detail.DeliveryIN| date:"HH:mm"}}</span> 出:<span style="color: #009900">{{detail.DeliveryOUT| date:"HH:mm"}}</span></span></p>
+                <p style="font-size: 12px;font-weight: bold;color: firebrick">送货 [{{detail.UnloadingDock}}] 进:<span style="color: #FF0000">{{detail.UnloadingIN| date:"HH:mm"}}</span> 出:<span style="color: #009900">{{detail.UnloadingOUT| date:"HH:mm"}}</span></p>
+            </div>
+
+            <div >
+                <div class="row" style="text-align: left">
+                    <div class="col  "  style=";Margin-left:1px" >
+                        接单等待时间：{{order.waitTimeDriverConfirm}}分钟
+                    </div>
+                    <div  class="col" style=";Margin-left:2px" >
+                        <div ng-if="order.sStatus=='已派车未确认'"> <button style="width: 120px"  class="button button-small  button-assertive" ng-click="confirm(order.Applicant_ID)">确认接受派车</button></div>
+                        <div ng-if="order.sStatus!='已派车未确认'"><label>{{order.sStatus}}</label></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </ion-content>
+</ion-view>

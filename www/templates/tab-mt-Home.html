@@ -1,0 +1,45 @@
+<ion-view view-title="派车信息" cache-view="false">
+
+    <ion-content class="padding" style="background-color:#c0c0c0">
+
+        <p>您好：{{accessEmployee.DriverName}}</p>
+        <p>您驾驶的车辆：{{accessEmployee.CarNo}}</p>
+        <button style="width: 80px"  class="button button-small button-outline button-positive" ng-click="LoginOut(order.OrderNumber,order.MealTime)">下线登出</button>
+
+        <p ng-if="DriverBillList==null">还没有任务单，请保持APP打开状态</p>
+
+        <div class="list card"  ng-repeat="order in DriverBillList">
+            <div class="item">
+                <h2>订单号：{{order.ApplicantNO}}</h2>
+                <p style="font-size: 10px">要求车辆到达时间：{{order.ApplicantTime | date:"yyyy-MM-dd HH:mm"}} 派车时间：{{order.DistributionTime | date:"yyyy-MM-dd HH:mm"}}</p>
+                <p style="font-size: 10px">货物类型：{{order.GoodsType}}</p>
+                <p style="font-size: 10px">线路：{{order.Line}}</p>
+            </div>
+            <div class="item" ng-repeat="detail in listDetails">
+                <p style="font-size: 10px">E-gate单号：{{detail.EgateBillNo}}</p>     <p style="font-size: 10px">提货点：{{detail.DeliveryArea"}} 提货码头：{{order.DeliveryDock}}</p>-> <p style="font-size: 10px">送货点：{{detail.UnloadingArea"}} 送货码头：{{order.UnloadingDock}}</p>
+            </div>
+
+            <div >
+                <div class="row" style="text-align: left">
+                    <div class="col col-75 "  style=";Margin-left:1px" >
+                        已经等待{{order.waitTimeDriverConfirm}}分钟
+                    </div>
+                    <div  class="col" style=";Margin-left:2px" >
+                        <div ng-if="order.sStatus=='已派车未确认'"> <button style="width: 80px"  class="button button-small button-outline button-positive" ng-click="cancelOrder(order.OrderNumber,order.MealTime)">确认接受派车</button></div>
+                        <div ng-if="order.Status!='已派车未确认'"><label>{{order.Status}}</label></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </ion-content>
+
+</ion-view>

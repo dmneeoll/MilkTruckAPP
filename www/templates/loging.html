@@ -1,0 +1,71 @@
+<ion-view view-title="Sign In" class="loginBg" hide-nav-bar="true" cache-view="false">
+    <ion-content class="padding">
+        <div class="row responsive-sm padding remvoeBP">
+            <div class="col">
+
+                <div  class="app-logo"   style="text-align:center;"><img src="img/milkTruck/car.jpg" ></div>
+                <section class="_editor">
+                    <section style="border:0;margin:0;padding:0">
+                        <section style="padding:0;margin:0 auto;text-align:center;-webkit-transform:rotate(0)">
+                            <section style="color:#33b86c;background:#fff;font-size:16px;line-height:35px;height:35px;padding:0 10px;margin:0 auto;display:inline-block;letter-spacing:1px">
+                                <p>
+                                    伟创力周转车
+                                </p>
+                            </section>
+                        </section>
+                        <section style="padding:0;margin:0;text-align:center;width:100%" data-width="100%">
+                            <section style="padding:0;margin:-19px auto 0;width:100%" data-width="100%">
+                                <img src="http://newcdn.96weixin.com/mmbiz.qlogo.cn/mmbiz_gif/GCSG9VLghho7ib2mqdGiapo8Oibhic4FUVrTnZibtmyL5TavicGWOJewXL3zFVQc5qb0LdBGC4vs1ayrSMFtLqyCkuVw/0?wx_fmt=gif" style="width:100%;margin:0;padding:0;vertical-align:top;min-height:2px;max-height:2px;background:#33b86c" data-width="100%"/>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <section class="_editor">
+                    <p>
+                        <br/>
+                    </p>
+                </section>
+
+                <div class="list list-inset removePM">
+
+                    <!--<div class="item item-input">-->
+                        <!--<span class="input-label" style="width: 90px;font-size:80%">车牌号:</span>-->
+
+                        <!--<select class="button" id="selCarNo"  ng-options='t.CarNo for t in listCarNo'-->
+                                <!--ng-model="UserInfo.CarNo"  ng-change="carNoUpdate()"></select>-->
+                    <!--</div>-->
+                    <!--<div class="item item-button-right item-input">-->
+                        <!--<span class="input-label" style="width: 90px;font-size:80%">验证码:</span>-->
+                        <!--<input type="text" placeholder="验证码" ng-model="UserInfo.SecurityCode"/>-->
+                        <!--<button id="btnSecurity" class="button button-calm" ng-click="getSecurityCode(UserInfo)"> {{btnText}}</button>-->
+                    <!--</div>-->
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 90px;font-size:80%">车牌信息：</span>
+                        <label class="item item-input"><input type="text" ng-model="UserInfo.CarNo" placeholder="" readonly="readonly" style="width:250px;"></label>
+                    </div>
+                        <div class="item item-input">
+                        <span class="input-label" style="width: 92px;font-size:80%">司机姓名： </span>
+
+                        <select class="button "  ng-options='t.DriverName for t in listDriver'
+                                ng-model="UserInfo.DriverName"  ng-change="driverUpdate()"></select>
+                    </div>
+                    <div class="item item-input">
+                        <span class="input-label" style="width: 90px;font-size:80%">身份证后6位：</span>
+                        <label class="item item-input"><input type="password" ng-model="UserInfo.Password" placeholder="身份证后6位" ></label>
+                    </div>
+
+                </div>
+
+                <div class="loginButton"><button class="button ion-unlocked button-block button-balanced" ng-click="login();" > Login </button>  </div>
+
+                <div style="float:left;">
+                    <a style="text-decoration:underline" ng-click="bangdingCarNo();">绑定车牌</a>
+                </div >
+
+            </div>
+        </div>
+
+
+
+    </ion-content>
+</ion-view>
